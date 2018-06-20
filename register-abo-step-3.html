@@ -89,8 +89,8 @@
                             <div class="row reg-items active">
                                 <div class="col-md-1 col-xs-12 select-box image-select-box panel">
                                     <input class="amwa-radio" type="radio" name="optradio" id="radio1">
-                                    <label for="radio1" class="radio-label radio-label1 in" data-toggle="collapse" href="#collapseOne"></label>
-                                    <div id="collapseOne" class="panel-collapse collapse in"></div>
+                                    <label id="collapseOne" for="radio1" class="radio-label radio-label1 in collapsed" href="#collapseOne"></label>
+                                    <div class="panel-collapse collapse in"></div>
                                 </div>
                                 <div class="col-md-3 col-xs-12 img-col hide-in-mob">
                                     <img src="images/register/reg-item-pic.jpg"></div>
@@ -113,8 +113,8 @@
                             <div class="row reg-items active">
                                 <div class="col-md-1 col-xs-12 select-box image-select-box panel">
                                     <input class="amwa-radio" type="radio" name="optradio" id="radio2">
-                                    <label for="radio2" class="radio-label radio-label2" data-toggle="collapse" href="#collapseTwo"></label>
-                                    <div id="collapseTwo" class="panel-collapse collapse in"></div>
+                                    <label for="radio2" id="collapseTwo" class="radio-label radio-label2" href="#collapseTwo"></label>
+                                    <div class="panel-collapse collapse in"></div>
                                 </div>
                                 <div class="col-md-3 col-xs-12 img-col hide-in-mob">
                                     <img src="images/register/Amwayestarter1x.png"></div>
@@ -299,7 +299,7 @@
                     <input class="" id="agree" name="agree" type="checkbox" checked="" />
                     <label for="agree" class="normal" id="agree-label">I Agree</label></div>
                 <div class="pop-footer">
-                    <button class="btn primary" id="submit-btn">Submit</button>
+                    <button class="btn primary" id="popup-submit-btn">Submit</button>
                     <a class="btn btn-cancel" id="cancel-btn">Cancel</a></div>
             </div>
         </div>
@@ -312,24 +312,40 @@
                 $('.radio-label1, .change-kit').click(function() {
                     $('#pop-terms1').fadeIn();
                 });
+
                 $('.radio-label2').click(function() {
                     $('#pop-terms2').fadeIn();
                 });
-                $('.pop-close, #submit-kit-btn, #submit-btn, #cancel-btn').click(function(e) {
+
+                $('.pop-close, #cancel-btn').click(function(e) {
                     e.preventDefault();
                     $('.popup').fadeOut();
-                    $('.radio-label').removeClass('collapsed') ;
-                    $('.radio-label').attr('class', 'panel-collapse collapse in');
-
                 });
+
+                // PRODUCT STARTER KIT COLLECTION POPUP
+                $('#submit-kit-btn').click(function(e) {
+                    e.preventDefault();
+                    $('.popup').fadeOut();
+                    $('#collapseTwo').removeClass('collapsed');
+                    $('#collapseOne').attr('class', 'radio-label radio-label1 in collapsed');
+                });
+
+                // E-STARTER KIT POPUP
+                 $('#popup-submit-btn').click(function(e) {
+                    e.preventDefault();
+                    $('.popup').fadeOut();
+                    $('#collapseOne').removeClass('collapsed');
+                    $('#collapseTwo').attr('class', 'radio-label radio-label2 in collapsed');
+                });
+
                 $('#submit-btn').click(function() {
                     location.href = 'register-abo-step-3-2.html';
-                }) 
+                });
+
                 $(".checklabel").click(function() {
                     checkAttr();
-                })
-
-            })</script>
+                });
+            });</script>
     </body>
 
 </html>
