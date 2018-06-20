@@ -1,0 +1,49 @@
+
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+.breadcrumb-section {
+  padding: 1.5em 0 1em;
+  position: relative;
+  display: block;
+  .breadcrumb {
+    padding: @breadcrumb-padding-vertical 0 @breadcrumb-padding-vertical 0;
+    margin-bottom: 0.25em;
+    list-style: none;
+    border-radius: @border-radius-base;
+    font-size: 0.875em;
+    text-transform: capitalize;
+    > li {
+      display: inline-block;
+      + li:before {
+        content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+        padding: 0 5px;
+        color: @breadcrumb-color;
+      }
+      a {
+        color: @deepBlue;
+        &:hover, &:focus {
+          color: @blue;
+        }
+      }
+    }
+
+    > .active {
+      color: @breadcrumb-active-color;
+    }
+  }
+  &.has-warning {
+     padding-top: 4.5em;
+  }
+  @media (max-width:768px) {
+    padding: 1em 0 0.5em;
+    .breadcrumb {
+      margin:0 ;
+    }
+    &.has-warning {
+      padding-top: 8.5em;
+    }
+  }
+  
+}
